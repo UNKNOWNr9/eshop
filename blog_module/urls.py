@@ -3,5 +3,5 @@ from blog_module.views import Home
 
 
 urlpatterns = [
-    path('', Home.as_view(), name='home')
+    path('', Home.as_view(), name='home'),
 ]
