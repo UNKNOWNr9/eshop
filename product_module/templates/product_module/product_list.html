@@ -1,5 +1,6 @@
 {% extends 'shared/_layout.html' %}
 {% load static %}
+{% block title %}محصولات{% endblock %}
 {% block content %}
 	<section id="advertisement">
 		<div class="container">
@@ -10,35 +11,41 @@
 	<section>
 		<div class="container">
 			<div class="row">
-
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">محصولات عمده</h2>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{% static 'images/shop/product.jpg' %}" alt="" />
-										<h2>1.250.000 ريال</h2>
-										<p>توضیحات کوتـاه محصـول</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>1.250.000 ريال</h2>
-											<p>توضیحات کوتـاه محصـول</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
-										</div>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href=""><i class="fa fa-plus-square"></i>لیست علاقه مندی ها</a></li>
-										<li><a href=""><i class="fa fa-plus-square"></i>مقایسه</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+                        {% for product in products %}
+                             <!--product_list-->
+                            <a href="{% url 'product-detail' product.slug %}">
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <img src="{% static 'images/shop/product.jpg' %}" alt="" />
+                                                <h2>{{ product.price }} ريال</h2>
+                                                <p>{{ product.name }}</p>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
+                                            </div>
+{#                                            js overlay#}
+    {#                                        <div class="product-overlay">#}
+    {#                                            <div class="overlay-content">#}
+    {#                                                <h2>1.250.000 ريال</h2>#}
+    {#                                                <p>توضیحات کوتـاه محصـول</p>#}
+    {#                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+                                        </div>
+                                        <div class="choose">
+                                            <ul class="nav nav-pills nav-justified">
+                                                <li><a href=""><i class="fa fa-plus-square"></i>لیست علاقه مندی ها</a></li>
+                                                <li><a href=""><i class="fa fa-plus-square"></i>مقایسه</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                        <!--pagination-->
 						<ul class="pagination">
 							<li class="active"><a href="">1</a></li>
 							<li><a href="">2</a></li>
@@ -47,7 +54,6 @@
 						</ul>
 					</div><!--features_items-->
 				</div>
-
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>دسته بندی محصولات</h2>
@@ -159,7 +165,6 @@
 
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>

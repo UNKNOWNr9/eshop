@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from django.views.generic import TemplateView
 # Create your views here.
-def home_page(request):
-    return render(request, 'home_module/index.html')
+
+class HomeView(TemplateView):
+    template_name = 'home_module/index.html'
+
 
 def site_header_component(request):
     return render(request, 'shared/site_header_component.html')
